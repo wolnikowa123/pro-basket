@@ -1,0 +1,9 @@
+{
+  "short_name": "PRO-BASKET",
+  "name": "PRO-BASKET \u2014 Iwo Olender",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0A1F44",
+  "background_color": "#F7F9FC"
+}

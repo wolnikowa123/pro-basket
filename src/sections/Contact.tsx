@@ -26,16 +26,6 @@ const Row = styled.div`
   }
 `;
 
-const Grid2 = styled.div`
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 600px) {
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
 const DotWrap = styled.span`
   position: relative;
   width: 12px;
@@ -308,24 +298,24 @@ export default function Contact() {
 }
 
 /* style obiektowe tylko dla prostych inputów/przycisku */
-const input: React.CSSProperties = {
-  borderRadius: 12,
-  padding: "12px 14px",
-  background: "rgba(255,255,255,.08)",
-  color: "#fff",
-  border: "1px solid rgba(255,255,255,.15)",
-  width: "100%",
-};
+// const input: React.CSSProperties = {
+//   borderRadius: 12,
+//   padding: "12px 14px",
+//   background: "rgba(255,255,255,.08)",
+//   color: "#fff",
+//   border: "1px solid rgba(255,255,255,.15)",
+//   width: "100%",
+// };
 
-const send: React.CSSProperties = {
-  marginTop: 14,
-  width: "100%",
-  borderRadius: 14,
-  background: "#fff",
-  color: "#0B0F14",
-  padding: "12px 16px",
-  fontWeight: 800,
-};
+// const send: React.CSSProperties = {
+//   marginTop: 14,
+//   width: "100%",
+//   borderRadius: 14,
+//   background: "#fff",
+//   color: "#0B0F14",
+//   padding: "12px 16px",
+//   fontWeight: 800,
+// };
 
 const link: React.CSSProperties = {
   display: "flex",

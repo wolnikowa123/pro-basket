@@ -9,7 +9,7 @@ import {
 } from "../ui/primitives";
 import { Star } from "lucide-react";
 import styled from "styled-components";
-import { theme } from "../theme";
+
 const Box = styled(Card)`
   background: #fff;
   border: 2px solid rgba(229, 57, 53, 0.35);

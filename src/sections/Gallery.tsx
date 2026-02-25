@@ -94,6 +94,7 @@ const ModalBox = styled.div`
   border-radius: 22px;
   padding: 24px 24px 26px;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+  position: relative;
 `;
 
 const ModalTitle = styled.div`
@@ -107,11 +108,11 @@ const ModalTitle = styled.div`
 const ModalGrid = styled.div`
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
 
   @media (min-width: 768px) {
     gap: 12px;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
@@ -125,7 +126,9 @@ const ThumbBtn = styled.button<{ active: boolean }>`
       active ? theme.colors.accent : "rgba(0, 0, 0, 0.08)"};
   box-shadow: ${({ active }) =>
     active ? "0 0 0 1px rgba(229,57,53,0.35)" : "none"};
-  transition: transform 0.15s ease, border-color 0.15s ease,
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
     box-shadow 0.15s ease;
 
   img {
@@ -239,6 +242,70 @@ const Counter = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `;
 
+const LoadingSpinner = styled.div`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.15);
+  border-top-color: #90023f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+const LoadingWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 22px;
+  z-index: 100;
+`;
+
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+`;
+
+const PaginationBtn = styled.button<{ active?: boolean }>`
+  all: unset;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: ${({ active }) => (active ? "#000" : "#90023F")};
+  font-weight: ${({ active }) => (active ? 600 : 500)};
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #000;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    &:hover {
+      color: #90023f;
+    }
+  }
+`;
+
 const images = [
   Photo1,
   Photo2,
@@ -271,6 +338,14 @@ export default function Gallery() {
   const [fullscreenIndex, setFullscreenIndex] = React.useState<number | null>(
     null
   ); // full screen viewer
+  const [loadingImages, setLoadingImages] = React.useState<Set<number>>(
+    new Set(Array.from({ length: images.length }, (_, i) => i))
+  );
+  const [currentPage, setCurrentPage] = React.useState(1); // pagination
+
+  // 4 rows: 3 cols na mobile, 4 cols na desktop
+  const ITEMS_PER_PAGE =
+    typeof window !== "undefined" && window.innerWidth >= 768 ? 16 : 12;
 
   // ESC: najpierw zamknij fullscreen, potem cały modal
   React.useEffect(() => {
@@ -299,10 +374,6 @@ export default function Gallery() {
     };
   }, [open]);
 
-  const openModal = () => {
-    setOpen(true);
-  };
-
   const openFullscreen = (index: number) => {
     setFullscreenIndex(index);
   };
@@ -321,6 +392,47 @@ export default function Gallery() {
     setFullscreenIndex((prev) =>
       prev === null ? 0 : (prev + 1) % images.length
     );
+  };
+
+  const handleImageLoaded = (index: number) => {
+    setLoadingImages((prev) => {
+      const next = new Set(prev);
+      next.delete(index);
+      return next;
+    });
+  };
+
+  // Paginacja
+  const totalPages = Math.ceil(images.length / ITEMS_PER_PAGE);
+  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIdx = startIdx + ITEMS_PER_PAGE;
+  const paginatedImages = images.slice(startIdx, endIdx);
+
+  // Resetuj stronę jeśli zamknąć modal
+  React.useEffect(() => {
+    if (!open) {
+      setCurrentPage(1);
+    }
+  }, [open]);
+
+  // Preloaduj wszystkie obrazy gdy otwiera się modal
+  React.useEffect(() => {
+    if (open) {
+      setLoadingImages(
+        new Set(Array.from({ length: images.length }, (_, i) => i))
+      );
+
+      // Preload all images
+      images.forEach((src, index) => {
+        const img = new Image();
+        img.onload = () => handleImageLoaded(index);
+        img.src = src;
+      });
+    }
+  }, [open]);
+
+  const openModal = () => {
+    setOpen(true);
   };
 
   const visibleImages = images.slice(0, 8); // max 8 na głównej siatce
@@ -354,17 +466,60 @@ export default function Gallery() {
             <ModalBox onClick={(e) => e.stopPropagation()}>
               <ModalTitle>Galeria zdjęć</ModalTitle>
 
+              {loadingImages.size > 0 && (
+                <LoadingWrapper>
+                  <LoadingSpinner />
+                </LoadingWrapper>
+              )}
+
               <ModalGrid>
-                {images.map((src, i) => (
-                  <ThumbBtn
-                    key={i}
-                    active={i === fullscreenIndex}
-                    onClick={() => openFullscreen(i)}
-                  >
-                    <img src={src} alt="" />
-                  </ThumbBtn>
-                ))}
+                {paginatedImages.map((src, i) => {
+                  const actualIndex = startIdx + i;
+                  return (
+                    <ThumbBtn
+                      key={actualIndex}
+                      active={actualIndex === fullscreenIndex}
+                      onClick={() => openFullscreen(actualIndex)}
+                    >
+                      <img
+                        src={src}
+                        alt=""
+                        onLoad={() => handleImageLoaded(actualIndex)}
+                      />
+                    </ThumbBtn>
+                  );
+                })}
               </ModalGrid>
+
+              {totalPages > 1 && (
+                <PaginationWrapper>
+                  <PaginationBtn
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
+                  >
+                    ←
+                  </PaginationBtn>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <PaginationBtn
+                        key={page}
+                        active={page === currentPage}
+                        onClick={() => setCurrentPage(page)}
+                      >
+                        {page}
+                      </PaginationBtn>
+                    )
+                  )}
+                  <PaginationBtn
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(totalPages, p + 1))
+                    }
+                    disabled={currentPage === totalPages}
+                  >
+                    →
+                  </PaginationBtn>
+                </PaginationWrapper>
+              )}
             </ModalBox>
 
             <CloseBtn onClick={() => setOpen(false)}>

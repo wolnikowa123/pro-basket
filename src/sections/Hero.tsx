@@ -132,30 +132,30 @@ const PrimaryLink = styled.a`
   }
 `;
 
-const SecondaryLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff !important;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background 0.18s ease,
-    border-color 0.18s ease,
-    transform 0.18s ease;
+// const SecondaryLink = styled.a`
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 10px 18px;
+//   border-radius: 999px;
+//   font-weight: 600;
+//   font-size: 0.95rem;
+//   background: transparent;
+//   border: 1px solid rgba(255, 255, 255, 0.25);
+//   color: #fff !important;
+//   text-decoration: none;
+//   cursor: pointer;
+//   transition:
+//     background 0.18s ease,
+//     border-color 0.18s ease,
+//     transform 0.18s ease;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: #fff;
-    transform: translateY(-1px);
-  }
-`;
+//   &:hover {
+//     background: rgba(255, 255, 255, 0.05);
+//     border-color: #fff;
+//     transform: translateY(-1px);
+//   }
+// `;
 
 export default function Hero() {
   const online = useOnlineStatus();

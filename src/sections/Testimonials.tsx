@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Section,
-  Container,
-  Eyebrow,
-  Title,
-  Grid3,
-  Card,
-} from "../ui/primitives";
+import { Section, Container, Eyebrow, Grid3, Card } from "../ui/primitives";
 import { Star } from "lucide-react";
 import styled from "styled-components";
 

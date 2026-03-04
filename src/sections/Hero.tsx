@@ -122,7 +122,9 @@ const PrimaryLink = styled.a`
   color: #000 !important;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
 
   &:hover {
     transform: translateY(-1px);
@@ -143,7 +145,9 @@ const SecondaryLink = styled.a`
   color: #fff !important;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease,
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
     transform 0.18s ease;
 
   &:hover {
@@ -172,7 +176,7 @@ export default function Hero() {
               fontWeight: 900,
             }}
           >
-            Treningi z Iwo Olender
+            Trenuj 1:1 <br />z Iwo Olender
           </h1>
 
           <p
@@ -183,15 +187,16 @@ export default function Hero() {
               fontSize: 17,
             }}
           >
-            Pomagam zawodnikom grać pewniej i skuteczniej. Pracuję nad techniką
-            rzutu, koordynacją, decyzyjnością i przygotowaniem meczowym. Trenuję
-            indywidualnie, a w wakacje i ferie prowadzę również intensywne
-            PRO-BASKET Camp.
+            Pomagam zawodnikom grać pewniej, odważniej i skuteczniej - na każdym
+            poziomie zaawansowania. Pracuję nad techniką rzutu, koordynacją,
+            decyzyjnością i realnym przygotowaniem meczowym.
+            <br /> Jestem trenerem w Sharks a w wakacje i ferie prowadzę również
+            intensywne PRO-BASKET Camp 🏀
           </p>
 
           <ButtonsRow>
             <PrimaryLink href="#oferta">Sprawdź ofertę</PrimaryLink>
-            <SecondaryLink href="#galeria">Zobacz zdjęcia</SecondaryLink>
+            {/* <SecondaryLink href="#galeria">Zobacz zdjęcia</SecondaryLink> */}
           </ButtonsRow>
 
           <div
@@ -217,7 +222,7 @@ export default function Hero() {
               }}
             />
             <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <CheckCircle2 size={16} /> Bezpieczne, kameralne grupy
+              <CheckCircle2 size={16} /> Treningi indywidualne
             </span>
           </div>
         </div>

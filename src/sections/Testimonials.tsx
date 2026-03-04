@@ -54,6 +54,13 @@ const Stars = styled.div`
   margin-bottom: 6px;
 `;
 
+const Lead = styled.p`
+  margin: 0 0 26px;
+  opacity: 0.9;
+  font-size: clamp(16px, 2.2vw, 20px);
+  margin-top: 12px;
+`;
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -101,7 +108,9 @@ export default function Testimonials() {
     <Section id="opinie">
       <Container>
         <Eyebrow>Opinie</Eyebrow>
-        <Title dark>Zaufali nam zawodnicy i rodzice</Title>
+        <Lead>
+          Kilka słów od zawodników, z którymi pracuję i zadowolonych rodziców:
+        </Lead>
 
         <Grid3>
           {testimonials.map((t, i) => (

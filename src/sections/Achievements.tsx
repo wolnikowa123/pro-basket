@@ -5,7 +5,6 @@ import {
   Container,
   Eyebrow,
   Title,
-  Intro,
   Grid3,
   Card,
 } from "../ui/primitives";
@@ -23,7 +22,9 @@ const StyledCard = styled(Card)`
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   color: #fff;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
 
   &:hover {
     border-color: #ff6a64;
@@ -52,22 +53,28 @@ const ItemText = styled.div`
   opacity: 0.9;
   line-height: 1.4;
 `;
+const Lead = styled.p`
+  margin: 0 0 26px;
+  opacity: 0.9;
+  font-size: clamp(16px, 2.2vw, 20px);
+  margin-top: 12px;
+`;
 
 const data = [
   {
     img: mistrz,
     title: "Dwukrotny mistrz Polski — 2019/20",
-    text: "Złote medale w młodzieżowych mistrzostwach Polski. Doświadczenie gry na najwyższym poziomie rywalizacji i pracy w silnym sztabie szkoleniowym.",
+    text: "Mam na koncie 2 złote medale w młodzieżowych mistrzostwach Polski. Doświadczyłem gry na najwyższym poziomie rywalizacji i pracy w silnym sztabie szkoleniowym.",
   },
   {
     img: ekstraklasa,
     title: "Zawodnik Ekstraklasy — Arka Gdynia",
-    text: "Sezon w najwyższej klasie rozgrywkowej. Trening pod presją, profesjonalne przygotowanie motoryczne i taktyczne oraz regularne występy na krajowej scenie.",
+    text: "Grałem w najwyższej klasie rozgrywkowej, gdzie liczy się każdy detal, dobre przygotowanie i mental. Doświadczenie z regularnych występów na krajowej scenie dziś przekładam na treningi z zawodnikami.",
   },
   {
     img: trening,
     title: "Trener z wieloletnim doświadczeniem",
-    text: "Praca indywidualna i z grupami od poziomu podstawowego po zawodników ligowych. Rozwój techniki, pewności siebie i skutecznej gry w meczach.",
+    text: "Pracuję z młodymi graczami, którzy dopiero uczą się podstaw oraz z zawodnikami ligowymi, którzy chcą podnieść poziom. Pomagam w rozwoju techniki, pewności siebie i skutecznej gry.",
   },
 ];
 
@@ -77,10 +84,11 @@ export default function Achievements() {
       <Container>
         <Eyebrow>Dlaczego warto</Eyebrow>
         <Title dark>Osiągnięcia i doświadczenie</Title>
-        <Intro className="silver">
-          Realne kompetencje, potwierdzone wynikami sportowymi i praktyką w
-          szkoleniu.
-        </Intro>
+        <Lead className="silver">
+          Wiem, jak wygląda droga od szatni do finału. Moje umiejętności to nie
+          teoria, ale lata spędzone na boiskach - od mojego szkolenia, przez
+          występy w ekstraklasie, aż do szkolenia innych zawodników.
+        </Lead>
 
         <Grid3>
           {data.map((a, i) => (

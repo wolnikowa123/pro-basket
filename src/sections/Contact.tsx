@@ -1,13 +1,6 @@
 // src/sections/Contact.tsx
 import React from "react";
-import {
-  Section,
-  Container,
-  Eyebrow,
-  Title,
-  Intro,
-  Card,
-} from "../ui/primitives";
+import { Section, Container, Eyebrow, Title, Card } from "../ui/primitives";
 import PortraitIwo from "../assets/portret-iwo.jpg";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
 import { Phone, Mail, Instagram } from "lucide-react";
@@ -116,6 +109,12 @@ const CopyNote = styled.div`
   opacity: 0.8;
   color: #fff;
 `;
+const Lead = styled.p`
+  margin: 0 0 26px;
+  opacity: 0.9;
+  font-size: clamp(16px, 2.2vw, 20px);
+  margin-top: 12px;
+`;
 
 export default function Contact() {
   const online = useOnlineStatus();
@@ -182,10 +181,12 @@ export default function Contact() {
       <Container>
         <Eyebrow>Kontakt</Eyebrow>
         <Title dark>Złapmy kontakt</Title>
-        <Intro className="silver">
-          Napisz lub zadzwoń — odpowiadam szybko. Zielona kropka oznacza, że
-          jestem dostępny (8–20).
-        </Intro>
+        <Lead className="silver">
+          Napisz do mnie lub zadzwoń - odpowiadam tak szybko, jak to możliwe.
+          <p style={{ fontSize: "14px", marginTop: "0px" }}>
+            Zielona kropka oznacza, że jestem dostępny (8:00–20:00).
+          </p>
+        </Lead>
 
         <Row>
           {/* KARTA Z IWO */}
@@ -272,7 +273,14 @@ export default function Contact() {
                     >
                       <Instagram size={18} />
                     </IconLink>
-                    @probasketcamp
+                    <a
+                      href="https://www.instagram.com/probasketcamp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: "none" }}
+                    >
+                      @probasket-camp
+                    </a>
                   </div>
                 </div>
 

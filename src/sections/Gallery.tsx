@@ -1,5 +1,5 @@
 import React from "react";
-import { Section, Container, Eyebrow, Title, Intro } from "../ui/primitives";
+import { Section, Container, Eyebrow, Title } from "../ui/primitives";
 import styled from "styled-components";
 
 import Photo1 from "../assets/IMG_2234.jpg";
@@ -305,6 +305,12 @@ const PaginationBtn = styled.button<{ active?: boolean }>`
     }
   }
 `;
+const Lead = styled.p`
+  margin: 0 0 26px;
+  opacity: 0.9;
+  font-size: clamp(16px, 2.2vw, 20px);
+  margin-top: 12px;
+`;
 
 const images = [
   Photo1,
@@ -336,10 +342,10 @@ const images = [
 export default function Gallery() {
   const [open, setOpen] = React.useState(false); // modal z miniaturkami
   const [fullscreenIndex, setFullscreenIndex] = React.useState<number | null>(
-    null
+    null,
   ); // full screen viewer
   const [loadingImages, setLoadingImages] = React.useState<Set<number>>(
-    new Set(Array.from({ length: images.length }, (_, i) => i))
+    new Set(Array.from({ length: images.length }, (_, i) => i)),
   );
   const [currentPage, setCurrentPage] = React.useState(1); // pagination
 
@@ -384,13 +390,13 @@ export default function Gallery() {
 
   const goPrev = () => {
     setFullscreenIndex((prev) =>
-      prev === null ? 0 : (prev - 1 + images.length) % images.length
+      prev === null ? 0 : (prev - 1 + images.length) % images.length,
     );
   };
 
   const goNext = () => {
     setFullscreenIndex((prev) =>
-      prev === null ? 0 : (prev + 1) % images.length
+      prev === null ? 0 : (prev + 1) % images.length,
     );
   };
 
@@ -419,7 +425,7 @@ export default function Gallery() {
   React.useEffect(() => {
     if (open) {
       setLoadingImages(
-        new Set(Array.from({ length: images.length }, (_, i) => i))
+        new Set(Array.from({ length: images.length }, (_, i) => i)),
       );
 
       // Preload all images
@@ -442,10 +448,21 @@ export default function Gallery() {
       <Container>
         <Eyebrow>Galeria</Eyebrow>
         <Title dark>Treningi i campy</Title>
-        <Intro className="silver">
-          Udostępniamy zajęcia w social media – znajdź nas na IG:
-          @probasket-camp!
-        </Intro>
+        <Lead>
+          Zajrzyj na mój profil na Instagramie i zobacz, jak wyglądają treningi
+          od środka.
+          <br />
+          Bez filtrów i bez pozowania{" "}
+          <a
+            href="https://www.instagram.com/probasketcamp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none", color: "#da0863" }}
+          >
+            @probasket-camp
+          </a>
+          .
+        </Lead>
 
         <Grid>
           {visibleImages.map((src, i) => (
@@ -508,7 +525,7 @@ export default function Gallery() {
                       >
                         {page}
                       </PaginationBtn>
-                    )
+                    ),
                   )}
                   <PaginationBtn
                     onClick={() =>

@@ -4,12 +4,18 @@ import {
   Container,
   Eyebrow,
   Title,
-  Intro,
   Grid3,
   Card,
   Button,
 } from "../ui/primitives";
 import { CheckCircle2 } from "lucide-react";
+import styled from "styled-components";
+const Lead = styled.p`
+  margin: 0 0 26px;
+  opacity: 0.9;
+  font-size: clamp(16px, 2.2vw, 20px);
+  margin-top: 12px;
+`;
 
 export default function Offer() {
   return (
@@ -17,10 +23,10 @@ export default function Offer() {
       <Container>
         <Eyebrow>Oferta</Eyebrow>
         <Title dark>Treningi indywidualne i PRO-BASKET Camp</Title>
-        <Intro className="silver">
-          Dopasowane do wieku i poziomu. Technika, kondycja, analiza wideo i gry
-          zadaniowe.
-        </Intro>
+        <Lead className="silver">
+          Dopasowane do poziomu zawodnika, bez presji, z konkretnym planem
+          rozwoju. Technika, kondycja, analiza wideo i gry zadaniowe.
+        </Lead>
 
         <Grid3>
           {/* KARTA 1 */}
@@ -42,8 +48,8 @@ export default function Offer() {
                 color: "#fff",
               }}
             >
-              Skupienie na Twoich celach: rzut, kozioł, footwork,
-              decision-making.
+              Postaw na trening nastawiony na Twoje cele: rzut, kozioł,
+              footwork, decision-making.
             </div>
             <div
               style={{
@@ -61,7 +67,7 @@ export default function Offer() {
               kind="ghost"
               href="#kontakt"
               style={{
-                marginTop: "20px", // pcha przycisk na dół karty
+                marginTop: "auto", // pcha przycisk na dół karty
                 alignSelf: "center", // wyśrodkowanie poziome
                 backgroundColor: "transparent",
                 color: "white",
@@ -92,8 +98,9 @@ export default function Offer() {
                 color: "#fff",
               }}
             >
-              Półkolonie w lato i zimę. Treningi 2x dziennie, codziennie gra,
-              zabawy, integracja.
+              Nie rób sobie wakacji od treningu, zrób trening na wakacjach!
+              <br />
+              Treningi 2x dziennie, gry, zabawy, integracja.
             </div>
             <ul
               style={{
@@ -106,7 +113,7 @@ export default function Offer() {
               }}
             >
               <li style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <CheckCircle2 size={16} /> Turnusy lato
+                <CheckCircle2 size={16} /> PRO-BASKET Camp w lecie ☀️
               </li>
               <li
                 style={{
@@ -116,7 +123,7 @@ export default function Offer() {
                   marginTop: 6,
                 }}
               >
-                <CheckCircle2 size={16} /> Turnusy zima
+                <CheckCircle2 size={16} /> PRO-BASKET Camp w zimę ❄️
               </li>
             </ul>
             <Button
@@ -152,7 +159,8 @@ export default function Offer() {
                 color: "#fff",
               }}
             >
-              Przyjdź na pierwsze zajęcia i zobacz czy Ci się podoba.
+              Przyjdź na 1 darmowy trening i oceń, jak podoba Ci się praca ze
+              mną.
             </div>
             <div
               style={{
@@ -170,18 +178,20 @@ export default function Offer() {
               style={{
                 display: "flex",
                 color: "#8d8d8d",
-                marginTop: "5px",
+                margin: "5px 0",
                 alignItems: "center",
                 gap: 8,
+                height: "50px",
               }}
             >
-              <CheckCircle2 size={16} /> wytrenowaliśmy już 67 dzieci!
+              <CheckCircle2 size={16} />
+              Wytrenowaliśmy w Sharks już 220 młodych zawodników!
             </span>
             <Button
               kind="primary"
               href="#kontakt"
               style={{
-                marginTop: "20px",
+                marginTop: "auto",
                 alignSelf: "center",
                 width: "100%",
                 color: "#fff",

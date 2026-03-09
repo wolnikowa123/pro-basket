@@ -211,7 +211,7 @@ export default function Hero() {
             }}
           >
             <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Star size={16} fill="currentColor" /> 4.9/5 (opinie rodziców i
+              <Star size={16} fill="currentColor" /> 4.7/5 (opinie rodziców i
               zawodników)
             </span>
             <span

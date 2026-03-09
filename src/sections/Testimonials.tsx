@@ -28,7 +28,7 @@ const Box = styled(Card)`
 
 const Name = styled.div`
   margin-top: auto; /* ⭐ zawsze przykleja autora do dołu karty */
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.85);
 `;
@@ -39,12 +39,13 @@ const Text = styled.div`
   opacity: 0.9;
   line-height: 1.35;
   color: #000;
+  margin-bottom: 5px;
 `;
 
 const Stars = styled.div`
   display: flex;
   gap: 2px;
-  margin-bottom: 6px;
+  margin-bottom: 0px;
 `;
 
 const Lead = styled.p`
@@ -57,40 +58,42 @@ const Lead = styled.p`
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Rodzic: Marta P.",
-      text: "Syn wraca z treningów zmęczony, ale szczęśliwy. Widać poprawę rzutu i większą pewność siebie.",
+      text: "Chciałem podciągnąć swoje umiejętności podczas wakacji żeby lepiej wypaść w klubie - widzę mega progres! Będę jeździć na kolejne obozy.",
+      name: "Zawodnik",
     },
     {
-      name: "Zawodnik: Bartek (14)",
-      text: "Na indywidualnych rozkładamy mój rzut na części pierwsze. Na meczach dużo łatwiej mi podejmować decyzje.",
+      text: "Treningi są dobrze prowadzone, a atmosfera jest świetna. Wszystko jest na wysokim poziomie.",
+      name: "Rodzic",
     },
     {
-      name: "Rodzic: Tomasz L.",
-      text: "Fajne podejście do młodzieży – wymagająco, ale bez krzyku. Córka nie boi się popełniać błędów.",
+      text: "Treningi są super zawsze coś innego i fajnego. Czasem też są gierki lub ćwiczenia motoryczne - to jest ciekawe urozmaicenie.",
+      name: "Zawodnik",
     },
     {
-      name: "Uczestnik campu: Michał",
-      text: "Na PRO-BASKET Camp codziennie gramy, trenujemy i oglądamy wideo. Atmosfera jak w drużynie ligowej.",
+      text: "Świetne treningi, gierki i trener. Polecam!",
+      name: "Zawodnik",
+    },
+
+    {
+      text: "Bardzo lubię treningi z trenerem Iwo, a szczególnie gry 1 na 1.",
+      name: "Zawodnik",
     },
     {
-      name: "Rodzic: Joanna K.",
-      text: "Doceniam kontakt z trenerem – po każdym cyklu wiem nad czym pracowali i co warto wzmacniać.",
+      text: "Organizacyjnie i sportowo zajęcia na wysokim poziomie.",
+      name: "Rodzic",
     },
     {
-      name: "Zawodniczka: Ola (13)",
-      text: "Na treningach czuję, że ktoś patrzy tylko na mój rozwój. Dużo gier 1x1 i ćwiczeń pod moją pozycję.",
+      text: "Treningi są bardzo dokładne, nie są nudne. Czas wykorzystany w STU procentach, trener bardzo kompetentny.",
+      name: "Zawodnik",
     },
     {
-      name: "Rodzic: Paweł R.",
-      text: "Po kilku tygodniach widać różnicę w kondycji i nastawieniu. Syn zaczął wierzyć, że może więcej.",
+      text: "Podoba mi się, że dzieci korzystają z różnorodnych technik koszykarskich.",
+      name: "Rodzic",
     },
+
     {
-      name: "Uczestniczka campu: Zuzia",
-      text: "Najlepsze półkolonie jakie miałam – treningi, ekipa, konkursy rzutowe. Chcę wracać co roku.",
-    },
-    {
-      name: "Zawodnik: Kacper (17)",
-      text: "Treningi są konkretne, bez tracenia czasu. Pracujemy nad rzeczami, które od razu wykorzystuję w lidze.",
+      text: "Trener Iwo jest po prostu SUPER!",
+      name: "Zawodnik",
     },
   ];
   // todo update tekstow
@@ -115,7 +118,9 @@ export default function Testimonials() {
               </Stars>
 
               <Text>&ldquo;{t.text}&rdquo;</Text>
-              <Name>{t.name}</Name>
+              <Name>
+                — {t.name} {t.name === "Zawodnik" ? "🥇" : t.name === "Rodzic" ? "👨‍👩‍👧‍👦" : ""}
+              </Name>
             </Box>
           ))}
         </Grid3>

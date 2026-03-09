@@ -119,7 +119,8 @@ export default function Testimonials() {
 
               <Text>&ldquo;{t.text}&rdquo;</Text>
               <Name>
-                — {t.name} {t.name === "Zawodnik" ? "🥇" : t.name === "Rodzic" ? "👨‍👩‍👧‍👦" : ""}
+                — {t.name}{" "}
+                {t.name === "Zawodnik" ? "🥇" : t.name === "Rodzic" ? "👨‍👩‍👧‍👦" : ""}
               </Name>
             </Box>
           ))}

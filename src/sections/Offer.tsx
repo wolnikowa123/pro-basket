@@ -58,6 +58,7 @@ export default function Offer() {
                 borderRadius: 16,
                 padding: 12,
                 color: "#fff",
+                marginBottom: 10,
               }}
             >
               <div style={{ opacity: 0.85, fontSize: 14 }}>Cena</div>

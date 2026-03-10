@@ -58,6 +58,7 @@ const LogoImg = styled.img`
   width: 50px;
   @media (max-width: 480px) {
     height: 34px;
+    width: auto;
   }
 `;
 
@@ -74,7 +75,9 @@ const Nav = styled.nav`
   a {
     color: #fff;
     opacity: 0.9;
-    transition: opacity 0.15s ease, color 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      color 0.15s ease;
   }
   a:hover {
     color: ${({ theme }) => theme.colors.silver};
@@ -97,7 +100,9 @@ const CallBtn = styled.a`
   &:hover {
     filter: brightness(1.05);
     transform: translateY(-1px);
-    transition: transform 0.15s ease, filter 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      filter 0.15s ease;
   }
 `;
 

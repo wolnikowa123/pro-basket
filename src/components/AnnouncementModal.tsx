@@ -94,19 +94,6 @@ const Title = styled.h2`
   }
 `;
 
-const Subtitle = styled.div`
-  display: inline-block;
-  background: rgba(229, 57, 53, 0.2);
-  border-radius: 6px;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #e5393d;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-`;
-
 const Description = styled.p`
   margin: 0 0 20px 0;
   font-size: 16px;
@@ -118,17 +105,6 @@ const Description = styled.p`
     font-size: 15px;
     margin-bottom: 16px;
   }
-`;
-
-const LocationInfo = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 20px 0;
-  padding: 16px;
-  background: rgba(229, 57, 53, 0.08);
-  border-radius: 10px;
-  border-left: 3px solid rgba(229, 57, 53, 0.4);
 `;
 
 const LocationText = styled.div`

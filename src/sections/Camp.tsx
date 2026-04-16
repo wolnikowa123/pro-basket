@@ -177,7 +177,7 @@ export default function Camp() {
       }}
     >
       <Container>
-        <Eyebrow>Turnus Obozowy LATO 2026</Eyebrow>
+        <Eyebrow>PRO-BASKET CAMP lato 2026</Eyebrow>
 
         <Lead>
           Lato to idealny czas, aby pracować nad sobą i doskonalić swoje

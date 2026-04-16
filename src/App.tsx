@@ -8,20 +8,24 @@ import Hero from "./sections/Hero";
 import Offer from "./sections/Offer";
 import Testimonials from "./sections/Testimonials";
 import Gallery from "./sections/Gallery";
+import Camp from "./sections/Camp";
 import Contact from "./sections/Contact";
 import { Container } from "./ui/primitives";
 import Achievements from "./sections/Achievements";
+import AnnouncementModal from "./components/AnnouncementModal";
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <AnnouncementModal />
       <Header />
       <Hero />
       <Achievements />
       <Offer />
       <Testimonials />
       <Gallery />
+      <Camp />
       <Contact />
 
       <footer style={{ borderTop: "1px solid rgba(0,0,0,.06)" }}>
